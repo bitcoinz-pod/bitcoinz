@@ -83,7 +83,6 @@ public:
         consensus.nSubsidySlowStartInterval = 0;
         consensus.nPreBlossomSubsidyHalvingInterval = Consensus::PRE_BLOSSOM_HALVING_INTERVAL;
         consensus.nPostBlossomSubsidyHalvingInterval = Consensus::POST_BLOSSOM_HALVING_INTERVAL;
-        //consensus.nSubsidyHalvingInterval = 840000;
         consensus.nMajorityEnforceBlockUpgrade = 750;
         consensus.nMajorityRejectBlockOutdated = 950;
         consensus.nMajorityWindow = 4000;
@@ -94,7 +93,6 @@ public:
         consensus.nPowMaxAdjustUp = 34;
         consensus.nPreBlossomPowTargetSpacing = Consensus::PRE_BLOSSOM_POW_TARGET_SPACING;
         consensus.nPostBlossomPowTargetSpacing = Consensus::POST_BLOSSOM_POW_TARGET_SPACING;
-        //consensus.nPowTargetSpacing = 2.5 * 60;
         consensus.nPowAllowMinDifficultyBlocksAfterHeight = boost::none;
         consensus.vUpgrades[Consensus::BASE_SPROUT].nProtocolVersion = 170002;
         consensus.vUpgrades[Consensus::BASE_SPROUT].nActivationHeight =
@@ -104,14 +102,17 @@ public:
             Consensus::NetworkUpgrade::NO_ACTIVATION_HEIGHT;
         consensus.vUpgrades[Consensus::UPGRADE_OVERWINTER].nProtocolVersion = 770006;
         consensus.vUpgrades[Consensus::UPGRADE_OVERWINTER].nActivationHeight = 328500;
+        consensus.vUpgrades[Consensus::UPGRADE_OVERWINTER].hashActivationBlock =
+            uint256S("000000806b0edc3e39108fa95c35d02ff58975388ca50141d10d7dd52deb13eb");
         consensus.vUpgrades[Consensus::UPGRADE_SAPLING].nProtocolVersion = 770006;
         consensus.vUpgrades[Consensus::UPGRADE_SAPLING].nActivationHeight = 328500;
+        consensus.vUpgrades[Consensus::UPGRADE_SAPLING].hashActivationBlock =
+            uint256S("000000806b0edc3e39108fa95c35d02ff58975388ca50141d10d7dd52deb13eb");
         consensus.vUpgrades[Consensus::UPGRADE_BLOSSOM].nProtocolVersion = 770009;
-        consensus.vUpgrades[Consensus::UPGRADE_BLOSSOM].nActivationHeight =
-            Consensus::NetworkUpgrade::NO_ACTIVATION_HEIGHT;
+        consensus.vUpgrades[Consensus::UPGRADE_BLOSSOM].nActivationHeight = 865600;
 
         // The best chain should have at least this much work.
-        // consensus.nMinimumChainWork = uint256S("0x00000000000000000000000000000000000000000000000000a95cc5099213e3");
+        consensus.nMinimumChainWork = uint256S("000000000000000000000000000000000000000000000000000092816fe948b0");
 
         /**
          * The message start string should be awesome! ⓩ❤
@@ -203,22 +204,24 @@ public:
             ( 352540, uint256S("0x00000006838b961606dad5a3da08b595a69cb8fc78684d9a4d3d3727bc96eb2b"))
             ( 352640, uint256S("0x000000c4a4a131d358a4b5419171c627cfb219367a810ca1780ef3119f634b6b"))
             ( 352740, uint256S("0x0000006bcc7d38424a1cf996b3b4ee61c44f941523af16c26c22c2708151a977"))
-            ( 357600, uint256S("0x0000003b302a1ecfa6555b64981b1950853f49e022c923e98f94535225c6c54a")),
+            ( 357600, uint256S("0x0000003b302a1ecfa6555b64981b1950853f49e022c923e98f94535225c6c54a"))
+            ( 454535, uint256S("0x000000b7810d75c2b13b5e72e45712b19658bd68c8d814ef56b4434e54636b0c"))   // 16-NOV-2019 First live meeting in Rome
+            ( 681563, uint256S("0x0000039c1dfa07bc3019e67d424ed48d3b7aa19de8a57e29f80cfbd74e72f1b0")),  // Last mined block in 2020 !
 
-            1530166456,     // * UNIX timestamp of last checkpoint block
-            662217,         // * total number of transactions between genesis and last checkpoint
+            1609455594,     // * UNIX timestamp of last checkpoint block
+            1966202,        // * total number of transactions between genesis and last checkpoint
                             //   (the tx=... number in the SetBestChain debug.log lines)
-            2290.912865  // * estimated number of transactions per day after checkpoint
+            1521            // * estimated number of transactions per day after checkpoint
                             //   total number of tx / (checkpoint block height / (24 * 24))
         };
 
         // Hardcoded fallback value for the Sprout shielded value pool balance
         // for nodes that have not reindexed since the introduction of monitoring
         // in #2795.
-        // nSproutValuePoolCheckpointHeight = 520633;
-        // nSproutValuePoolCheckpointBalance = 22145062442933;
+        nSproutValuePoolCheckpointHeight = 520633;
+        nSproutValuePoolCheckpointBalance = 6296192669575187;
         fZIP209Enabled = true;
-        // hashSproutValuePoolCheckpointBlock = uint256S("0000000000c7b46b6bc04b4cbf87d8bb08722aebd51232619b214f7273f8460e");
+        hashSproutValuePoolCheckpointBlock = uint256S("000000c04878c0ac973983e3b873ca7b23a0325406ae7d87c6f90957f1264492");
 
         // Community Fee script expects a vector of 2-of-3 multisig addresses
         vCommunityFeeAddress = {
@@ -343,7 +346,6 @@ public:
         consensus.nSubsidySlowStartInterval = 0;
         consensus.nPreBlossomSubsidyHalvingInterval = Consensus::PRE_BLOSSOM_HALVING_INTERVAL;
         consensus.nPostBlossomSubsidyHalvingInterval = Consensus::POST_BLOSSOM_HALVING_INTERVAL;
-        //consensus.nSubsidyHalvingInterval = 840000;
         consensus.nMajorityEnforceBlockUpgrade = 51;
         consensus.nMajorityRejectBlockOutdated = 75;
         consensus.nMajorityWindow = 400;
@@ -354,7 +356,6 @@ public:
         consensus.nPowMaxAdjustUp = 34;
         consensus.nPreBlossomPowTargetSpacing = Consensus::PRE_BLOSSOM_POW_TARGET_SPACING;
         consensus.nPostBlossomPowTargetSpacing = Consensus::POST_BLOSSOM_POW_TARGET_SPACING;
-        //consensus.nPowTargetSpacing = 2.5 * 60;
         consensus.nPowAllowMinDifficultyBlocksAfterHeight = boost::none;
         consensus.vUpgrades[Consensus::BASE_SPROUT].nProtocolVersion = 170002;
         consensus.vUpgrades[Consensus::BASE_SPROUT].nActivationHeight =
@@ -364,14 +365,17 @@ public:
             Consensus::NetworkUpgrade::NO_ACTIVATION_HEIGHT;
         consensus.vUpgrades[Consensus::UPGRADE_OVERWINTER].nProtocolVersion = 770006;
         consensus.vUpgrades[Consensus::UPGRADE_OVERWINTER].nActivationHeight = 1500;
+        consensus.vUpgrades[Consensus::UPGRADE_OVERWINTER].hashActivationBlock =
+            uint256S("0001bd0b788908fe416ac3c2909735bccb8c79b591e76a359ec657a97fb48a6d");
         consensus.vUpgrades[Consensus::UPGRADE_SAPLING].nProtocolVersion = 770006;
         consensus.vUpgrades[Consensus::UPGRADE_SAPLING].nActivationHeight = 1500;
-        consensus.vUpgrades[Consensus::UPGRADE_BLOSSOM].nProtocolVersion = 770008;
-        consensus.vUpgrades[Consensus::UPGRADE_BLOSSOM].nActivationHeight =
-            Consensus::NetworkUpgrade::NO_ACTIVATION_HEIGHT;
+        consensus.vUpgrades[Consensus::UPGRADE_SAPLING].hashActivationBlock =
+            uint256S("0001bd0b788908fe416ac3c2909735bccb8c79b591e76a359ec657a97fb48a6d");
+        consensus.vUpgrades[Consensus::UPGRADE_BLOSSOM].nProtocolVersion = 770009;
+        consensus.vUpgrades[Consensus::UPGRADE_BLOSSOM].nActivationHeight = 32600;
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000000005000");
+        consensus.nMinimumChainWork = uint256S("000000000000000000000000000000000000000000000000000000000470fb4c");
 
         pchMessageStart[0] = 0xfa;
         pchMessageStart[1] = 0x1a;
@@ -448,10 +452,10 @@ public:
         // Hardcoded fallback value for the Sprout shielded value pool balance
         // for nodes that have not reindexed since the introduction of monitoring
         // in #2795.
-        // nSproutValuePoolCheckpointHeight = 440329;
-        // nSproutValuePoolCheckpointBalance = 40000029096803;
+        nSproutValuePoolCheckpointHeight = 21000;
+        nSproutValuePoolCheckpointBalance = 825099960000;
         fZIP209Enabled = true;
-        // hashSproutValuePoolCheckpointBlock = uint256S("000a95d08ba5dcbabe881fc6471d11807bcca7df5f1795c99f3ec4580db4279b");
+        hashSproutValuePoolCheckpointBlock = uint256S("00360d4e02fbea84aa687722584e24bdc94dd7b768f35b095d453d81c0469d3a");
 
         // Founders reward script expects a vector of 2-of-3 multisig addresses
         vCommunityFeeAddress = {
@@ -576,7 +580,6 @@ public:
         consensus.nSubsidySlowStartInterval = 0;
         consensus.nPreBlossomSubsidyHalvingInterval = Consensus::PRE_BLOSSOM_REGTEST_HALVING_INTERVAL;
         consensus.nPostBlossomSubsidyHalvingInterval = Consensus::POST_BLOSSOM_REGTEST_HALVING_INTERVAL;
-        //consensus.nSubsidyHalvingInterval = 150;
         consensus.nMajorityEnforceBlockUpgrade = 750;
         consensus.nMajorityRejectBlockOutdated = 950;
         consensus.nMajorityWindow = 1000;
@@ -587,7 +590,6 @@ public:
         consensus.nPowMaxAdjustUp = 0; // Turn off adjustment up
         consensus.nPreBlossomPowTargetSpacing = Consensus::PRE_BLOSSOM_POW_TARGET_SPACING;
         consensus.nPostBlossomPowTargetSpacing = Consensus::POST_BLOSSOM_POW_TARGET_SPACING;
-        //consensus.nPowTargetSpacing = 2.5 * 60;
         consensus.nPowAllowMinDifficultyBlocksAfterHeight = 0;
         consensus.vUpgrades[Consensus::BASE_SPROUT].nProtocolVersion = 170002;
         consensus.vUpgrades[Consensus::BASE_SPROUT].nActivationHeight =
@@ -601,7 +603,7 @@ public:
         consensus.vUpgrades[Consensus::UPGRADE_SAPLING].nProtocolVersion = 170006;
         consensus.vUpgrades[Consensus::UPGRADE_SAPLING].nActivationHeight =
             Consensus::NetworkUpgrade::NO_ACTIVATION_HEIGHT;
-        consensus.vUpgrades[Consensus::UPGRADE_BLOSSOM].nProtocolVersion = 170008;
+        consensus.vUpgrades[Consensus::UPGRADE_BLOSSOM].nProtocolVersion = 170009;
         consensus.vUpgrades[Consensus::UPGRADE_BLOSSOM].nActivationHeight =
             Consensus::NetworkUpgrade::NO_ACTIVATION_HEIGHT;
 
